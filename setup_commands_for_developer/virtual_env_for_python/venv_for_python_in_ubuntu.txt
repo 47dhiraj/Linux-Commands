@@ -1,0 +1,34 @@
+
+
+## Best way (sometime due to pip conflict, while creating venv, requirements can't be installed properly):
+
+    # One time setup command : For setting up actual pip for Ubuntu Default Python using sudo command:
+        ==> sudo apt install python3-pip
+
+    # One time setup command : for installing virtualenv using sudo
+        ==> sudo apt instal python3-virtualenv
+
+    # Now, u can create virtualenv for python whenever you wants:
+        ==> virtualenv virtual_env_folder
+
+
+
+## Alternative Way (this is also good way):
+
+    # At first install python-venv:
+
+        ==> SYNTAX: sudo apt install pythonversion-venv
+
+        ==> eg: sudo apt install python3.10-venv
+
+
+    # Create the virutal environment folder
+
+        ==> python3 -m venv virtual_env_folder
+
+
+
+## Now, COMMAN setup for both ways:
+
+    # Activate virtual environment:
+        SYNTAX : ==> source virtual_env_folder/bin/activate

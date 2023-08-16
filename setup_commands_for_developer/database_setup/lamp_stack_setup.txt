@@ -1,0 +1,68 @@
+To Install LAMP Stack (i.e Apache web server, Lamp Server & Phpmyadmin) in linux/ubuntu:
+
+LAMP stack stands for Linux, Apache, MySQL, and Python/PHP/Perl (depending on your working programming language).
+
+NOTE: The equivalent to "XAMPP" for Windows OS is "LAMP" for Ubuntu OS.
+
+
+    1. In terminal, type the command  "Sudo su", so that we can run any commands as root user i.e we don't have have to type "sudo":
+        ==> sudo su            (give the user system password)
+        ==> apt update         (to update the system)
+
+    2. To install apache2 web server, type the command:-
+        ==> apt-get install apache2
+
+    3. Now, to install the Lamp Server, type the command:
+        ==> apt-get install lamp-server^
+
+    4. To install Phpmyadmin, type the command as:
+        ==> apt-get install phpmyadmin
+
+    5. One dialog box will appear and select the ‘apache2’ by pressing spacebar.
+        Then press `Tab` and hit `Enter` to "OK".
+
+    6. Now, configuring phpmyadmin dialog box will appear and select ‘yes’ after that give the password in my case it’s  ‘admin’ 
+        This 'admin' password is of the root password.
+
+    7. Now, goto the php directory as:-
+        ==> cd /var/www/html/
+
+    8. If you hit the command as:-
+        ==> ls –all
+
+	    you can see the `index.html` file in that directory.
+
+    9. To see the php version you are using create info.php using command as:-
+        ==> nano info.php
+
+        after that type the code as:-
+
+            <?php
+                phpinfo();
+            ?>
+
+	    And press `ctrl + o` to `write/save` & press 'enter' and `ctrl + x` to exit.
+
+    10. Now goto the browser and type ‘localhost/info.php’ you will get the php version.
+
+    11. The in browser go to the ‘localhost/phpmyadmin’ you will have to login now.
+
+    so, to create user `name` and `password` at first type following command in terminal:
+        ==> sudo mysql -p -u root
+
+        Now, u will be inside the 'mysql' connection editor.
+
+    12. Create User using command as:-
+        ==> CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
+
+	    It means that the user name is ‘admin’ and password is also ‘admin’.
+
+
+    13. Grant Permission using the command as:-
+        ==> GRANT ALL PRIVILEGES ON *.* TO 'admin'@'%' WITH GRANT OPTION;
+
+
+        Now, u can exit from the mysql connection editor.
+
+
+    Wallah !

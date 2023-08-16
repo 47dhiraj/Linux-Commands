@@ -1,0 +1,81 @@
+
+# Commands for Postgresql database setup:
+
+
+    #1> Command for updating & upgrading ubuntu system:
+        ==> sudo apt update -y
+        ==> sudo apt upgrade -y
+
+
+    #2> Command to Install Postgresql(i.e psql) on ubuntu:
+        ==> sudo apt install postgresql postgresql-contrib
+
+
+
+    #> (Optional: just for better understanding): Login to psql database as a postgres user:
+        ==> sudo -i -u postgres             (login as postgres user)
+        ==> psql                            (logging to postgres database)
+
+    OR (alternative of above two command)
+        ==> sudo -u postgres psql           (command to connect to postgres shell)
+
+
+        ==> \l                              (to list all the current/existing databases)
+        ==> \q                              (to exit)
+
+
+
+
+    #3> Command to create a new PostgreSQL user/role:
+        ==> sudo su - postgres -c "createuser admin"        (if admin already exists then, u can skip step 3)
+        
+        OR
+        
+        ==> ssudo -u postgres "createuser dhiraj"
+
+
+
+    #4> Command to create a new PostgreSQL database:
+
+        syntax: sudo su - postgres -c "createdb databasename"
+
+        ==> eg: sudo su - postgres -c "createdb fastapi_ecom"
+
+
+
+    #5> Giving created user a Password:
+        ==> sudo -u postgres psql
+
+        ==> syntax: alter user <username> with encrypted password '<password>';
+        ==> eg: alter user admin with encrypted password 'admin';
+        OR
+        ==> eg: alter user dhiraj with encrypted password 'dhiraj';
+
+
+    #6> Command to access/give Grant all privileges/permissions to any postgres user to that created database:
+        ==> sudo -u postgres psql               (at first, command to connect to postgres shell)
+
+        ==> GRANT ALL PRIVILEGES ON DATABASE fastapi_ecom TO admin;    (command to grant any user to that created database)
+        OR
+        ==> GRANT ALL PRIVILEGES ON DATABASE fastapi_ecom TO dhiraj;
+
+
+        ==> exit            (exit to log out of postgres)
+
+
+    #6> (Optional) By default, the PostgreSQL server listens only on the local interface (127.0.0.1).
+        so, To enable remote access to your PostgreSQL server open the configuration file postgresql.conf and add listen_addresses = '*' in the 'CONNECTIONS AND AUTHENTICATION' section.
+
+        ==> sudo nano /etc/postgresql/14/main/postgresql.conf
+
+        now, postgresql.conf file will open in nano editor, and now, add listen_addresses = '*'  below the existing listen_addresses = 'localhost' code
+
+            # CONNECTIONS AND AUTHENTICATION
+        ==> listen_addresses = '*'
+
+
+        Now, To write/save the changes, press 'ctrl + o' & press "enter"  and to exit from the file, press 'ctrl + x'.
+        
+
+    #7> It's always good to restart postgresql service after making some changes:
+        ==> sudo systemctl restart postgresql apache2
